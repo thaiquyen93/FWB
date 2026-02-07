@@ -116,5 +116,8 @@ public class ProjectController {
         System.out.println(developerService.findById(devId));
         System.out.println("Total experience: " + totalExp);
     }
+    public void chuiChoNguUyen() {
+        System.out.println("Ta Ngu Uyen an cuc");
+    }
 
 }
