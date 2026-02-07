@@ -53,10 +53,7 @@ public class DeveloperService {
         }
         return lists;
     }
-    public void  viet69(){
-        while(true){
-        System.out.println("VKCCK LANANH,XNHAU");
-        }
-        
-    }
+    
+  
+    
 }
