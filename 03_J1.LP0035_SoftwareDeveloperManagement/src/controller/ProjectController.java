@@ -119,5 +119,7 @@ public class ProjectController {
     public void chuiChoNguUyen() {
         System.out.println("Ta Ngu Uyen an cuc");
     }
-
+    public void choNgguyenNguvc() {
+        System.out.println("Himalia");
+    }
 }
