@@ -88,7 +88,8 @@ public class Main {
   /*  Dãy Hồng Lĩnh nén linh khí thái dương miên viễn mùa xanh hiên ngang Nhân Kiệt
 Miên miết hiếu học miên miết mạch ngầm hiếu học xưa xửa dòng Rum
 Người Xứ Nghệ - chim Phượng Hoàng bốn phương sải cánh
-Ta lại về xứ Nghệ đầu thai ádádádưqeqưédád*/
+Ta lại về xứ Nghệ đầu thai ádádádưqeqưédád
+    dan toc tay */
 
     private static void printMenu() {
         System.out.println("\n===== SOFTWARE DEVELOPER MANAGEMENT =====");
