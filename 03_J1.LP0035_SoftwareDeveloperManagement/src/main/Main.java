@@ -13,16 +13,14 @@ public class Main {
         DeveloperService developerService = new DeveloperService();
         ProjectService projectService = new ProjectService();
 
-        DeveloperController developerController =
-                new DeveloperController(developerService, projectService);
-        ProjectController projectController =
-                new ProjectController(projectService, developerService);
+        DeveloperController developerController = new DeveloperController(developerService, projectService);
+        ProjectController projectController = new ProjectController(projectService, developerService);
         Inputter ip = new Inputter();
         boolean running = true;
 
         while (running) {
             printMenu();
-            int choice = ip.getInt("Enter your choice (1-12): ", 1, 12);
+            int choice = ip.getInt("Enter your choice (1-13): ", 1, 13);
 
             switch (choice) {
                 case 1:
@@ -56,28 +54,32 @@ public class Main {
 
                 case 8:
                     projectController.calculateTotalExperience();
-//                    projectController.listAllProject();
+                    // projectController.listAllProject();
                     break;
-//
+                //
                 case 9:
                     developerController.removeDeveloperById();
                     break;
 
-//                case 10:
-//                    developerController.sortDevelopersBySalary();
-//                    break;
-//
-                case 11:
-                    developerController.saveDeveloperToFile();
-//                    projectController.saveToFile();
+                case 10:
+                    projectController.calculateProjectEndDate();
                     break;
 
+                // case 11:
+                // developerController.sortDevelopersBySalary();
+                // break;
+
                 case 12:
+                    developerController.saveDeveloperToFile();
+                    // projectController.saveToFile();
+                    break;
+
+                case 13:
                     if (developerController.isDirty() || projectController.isDirty()) {
                         boolean confirm = ip.getYesNo("Do you want to save the changes before exiting? (Y/N): ");
                         if (confirm) {
                             developerController.saveDeveloperToFile();
-//                            projectController.saveToFile();
+                            // projectController.saveToFile();
                         }
                     }
                     running = false;
@@ -85,14 +87,16 @@ public class Main {
             }
         }
     }
-  /*  Dãy Hồng Lĩnh nén linh khí thái dương miên viễn mùa xanh hiên ngang Nhân Kiệt
-Miên miết hiếu học miên miết mạch ngầm hiếu học xưa xửa dòng Rum
-Người Xứ Nghệ - chim Phượng Hoàng bốn phương sải cánh
-Ta lại về xứ Nghệ đầu thai ádádádưqeqưédád
-    dan toc tay */
-    //file main//project/asda
-    
-    // 
+    /*
+     * Dãy Hồng Lĩnh nén linh khí thái dương miên viễn mùa xanh hiên ngang Nhân Kiệt
+     * Miên miết hiếu học miên miết mạch ngầm hiếu học xưa xửa dòng Rum
+     * Người Xứ Nghệ - chim Phượng Hoàng bốn phương sải cánh
+     * Ta lại về xứ Nghệ đầu thai ádádádưqeqưédád
+     * dan toc tay
+     */
+    // file main//project/asda
+
+    // con cho an cuc
     private static void printMenu() {
         System.out.println("\n===== SOFTWARE DEVELOPER MANAGEMENT =====");
         System.out.println("1.  List all Developers");
@@ -104,9 +108,10 @@ Ta lại về xứ Nghệ đầu thai ádádádưqeqưédád
         System.out.println("7.  List all Projects by Developer (Grouped)");
         System.out.println("8.  Calculate Total Experience by Dev ID");
         System.out.println("9.  Remove a Developer by ID");
-        System.out.println("10. Sort Developers by Salary");
-        System.out.println("11. Save data to files");
-        System.out.println("12. Quit program");
+        System.out.println("10. Calculate Project End Date");
+        System.out.println("11. Sort Developers by Salary");
+        System.out.println("12. Save data to files");
+        System.out.println("13. Quit program");
         System.out.println("========================================");
     }
 }

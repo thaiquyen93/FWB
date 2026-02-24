@@ -76,7 +76,14 @@ public class ProjectController {
 
         Date startDate = ip.getDateFromUser("Enter start date: ", false);
 
-        projectService.addProject(new Project(proID, devId, projectName, duration, startDate));
+        Project newProject = new Project(proID, devId, projectName, duration, startDate);
+
+        // Tự động tính và in ra ngày kết thúc dự án
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        System.out.println(">> Start date:  " + sdf.format(startDate));
+        System.out.println(">> End date:    " + sdf.format(newProject.getEndDate()));
+
+        projectService.addProject(newProject);
         markDirty();
     }
 
@@ -90,15 +97,15 @@ public class ProjectController {
         }
 
         for (Developer dev : devs) {
-            List<Project> projectList
-                    = projectService.findProjectByDevId(dev.getDevID());
+            List<Project> projectList = projectService.findProjectByDevId(dev.getDevID());
             viewFormatter.displayProjectsByDeveloper(dev, projectList);
         }
     }
+
     public void calculateTotalExperience() {
         String devId;
-        
-        do {            
+
+        do {
             devId = ip.getStringAndCheck("Enter developer ID to calculate total experience: ", Acceptable.DEV_ID_VALID);
             if (developerService.findById(devId) == null) {
                 System.out.println("Developer \n"
@@ -106,7 +113,7 @@ public class ProjectController {
                 devId = null;
             }
         } while (devId == null);
-        
+
         List<Project> projectList = projectService.findProjectByDevId(devId);
         int totalExp = 0;
         for (Project project : projectList) {
@@ -116,9 +123,31 @@ public class ProjectController {
         System.out.println(developerService.findById(devId));
         System.out.println("Total experience: " + totalExp);
     }
+
+    public void calculateProjectEndDate() {
+        String proId;
+        Project project;
+        do {
+            proId = ip.getStringAndCheck("Enter project ID to calculate end date: ", Acceptable.PROJECT_ID_VALID);
+            project = projectService.findById(proId);
+            if (project == null) {
+                System.out.println("Project ID does not exist!");
+                proId = null;
+            }
+        } while (proId == null);
+
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        System.out.println("--------------PROJECT DATE INFO--------------");
+        System.out.println("Project:    " + project.getProjectName());
+        System.out.println("Duration:   " + project.getDurationMonth() + " months");
+        System.out.println("Start date: " + sdf.format(project.getStartDate()));
+        System.out.println("End date:   " + sdf.format(project.getEndDate()));
+    }
+
     public void chuiChoNguUyen() {
         System.out.println("Ta Ngu Uyen an cuc");
     }
+
     public void choNgguyenNguvc() {
         System.out.println("Himalia");
     }
